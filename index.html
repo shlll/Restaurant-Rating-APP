@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RestaurantRating</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body ng-app="RestaurantRating">
+    <h1 class="caption">Restaurants</h1>
+    <div class="container" ng-controller="RestaurantRatingController as RestaurantRating">
+        <ul class="information" ng-repeat="restaurant in RestaurantRating.restaurants">
+            <img class="images" ng-src="{{restaurant.imageUrl}}">
+            <li>Name:{{restaurant.name}}</li>
+            <li>Description:{{restaurant.description}}</li>
+            <li>Level:{{restaurant.level}}
+                <span ng-if="restaurant.level >= 4" ng-class="{backgroundcolor:lightgreen}">-The retaurant is super tasty!</span>
+                <span ng-if="restaurant.level <=2" ng-class="{backgroundcolor:red}">-The retaurant is not very good!</span>
+            </li>
+            <button ng-click="RestaurantRating.increment(restaurant)">Increasing rating!</button>
+            <button ng-click="RestaurantRating.decrement(restaurant)">Decreasing rating!</button>
+        </ul>
+
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/RestaurantRatingController.js"></script>
+    <script src="js/services/RestaurantRatingServices.js"></script>
+</body>
+
+</html>
